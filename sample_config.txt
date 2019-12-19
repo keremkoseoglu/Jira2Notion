@@ -1,0 +1,17 @@
+{"config": {
+    "jira": {
+        "base_url": "http://www.myjira.com",
+        "username": "my_jira_user",
+        "password": "my_jira_pass"
+    },
+    "mac": {
+        "tmp_file": "/Users/kerem/Downloads/j2n.txt"
+    },
+    "note": {
+        "comment_count": 3
+    },
+    "notion": {
+	"token_v2": "111222333444aa",
+	"page": "https://www.notion.so/my_notion_account/my_notion_page"
+    }
+}}
