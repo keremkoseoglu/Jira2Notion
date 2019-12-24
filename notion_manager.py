@@ -56,3 +56,4 @@ class NotionManager:
                 break
             current_comment = issue.fields.comment.comments[comment_idx]
             subpage.children.add_new(QuoteBlock, title=current_comment.body)
+            subpage.children.add_new(DividerBlock)
