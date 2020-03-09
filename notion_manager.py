@@ -7,7 +7,6 @@ from notion.block import TextBlock
 from notion.block import HeaderBlock
 from notion.block import TodoBlock
 from notion.block import BookmarkBlock
-from notion.block import CodeBlock
 from notion.block import SubheaderBlock
 from notion.block import DividerBlock
 from notion.block import QuoteBlock
@@ -35,15 +34,15 @@ class NotionManager:
         subpage.children.add_new(TextBlock, title=issue.fields.description)
         subpage.children.add_new(DividerBlock)
         subpage.children.add_new(HeaderBlock, title="İşler")
-        subpage.children.add_new(TodoBlock, title="İlerlet")
-        subpage.children.add_new(TodoBlock, title="İncele")
-        subpage.children.add_new(TodoBlock, title="Todo")
-        subpage.children.add_new(TodoBlock, title="Activate")
+        subpage.children.add_new(TodoBlock, title="Jira ilerlet")
+        subpage.children.add_new(TodoBlock, title="Tamamla")
         subpage.children.add_new(TodoBlock, title="EPC & Release")
-        subpage.children.add_new(TodoBlock, title="İlerlet & not yaz")
+        subpage.children.add_new(TodoBlock, title="Jira ilerlet & not yaz")
         subpage.children.add_new(DividerBlock)
         subpage.children.add_new(HeaderBlock, title="Bittiğinde Jira'ya yazılacak")
         subpage.children.add_new(SubheaderBlock, title="Request notu")
+        subpage.children.add_new(TextBlock, title="...")
+        subpage.children.add_new(SubheaderBlock, title="Soft Config")
         subpage.children.add_new(TextBlock, title="...")
         subpage.children.add_new(SubheaderBlock, title="Yorum")
         subpage.children.add_new(TextBlock, title="...")
