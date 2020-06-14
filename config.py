@@ -1,20 +1,13 @@
-import json, os
+""" Configuration module """
+import json
+import os
 
 
 class Config:
-
+    """ Configuration class """
     _CONFIG_FILE = "/Users/kerem/Dropbox/etc/config/jira2notion.txt" # Check sample_config.txt
 
-    notion_token_v2 = ""
-    notion_page = ""
-    notion_comment_count = 0
-
-    jira_base_url = ""
-    jira_username = ""
-    jira_password = ""
-
     def __init__(self):
-
         # Read text file
         script_dir = os.path.dirname(__file__)
         config_path = os.path.join(script_dir, self._CONFIG_FILE)
