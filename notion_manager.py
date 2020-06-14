@@ -1,6 +1,5 @@
-from config import Config
+""" Notion manager module """
 from jira.resources import Issue
-from jira_manager import JiraManager
 from notion.client import NotionClient
 from notion.block import PageBlock
 from notion.block import TextBlock
@@ -10,27 +9,31 @@ from notion.block import BookmarkBlock
 from notion.block import SubheaderBlock
 from notion.block import DividerBlock
 from notion.block import QuoteBlock
+from config import Config
+from jira_manager import JiraManager
 
 
 class NotionManager:
-
+    """ Notion manager class """
     def __init__(self, c: Config):
         self._config = c
         self._client = NotionClient(token_v2=self._config.notion_token_v2)
         self._page = self._client.get_block(self._config.notion_page)
 
     def create_page(self, issue: Issue, jira_man: JiraManager):
-
+        """ Creates a new Notion page """
         try:
             title_key = issue.fields.parent.key
-        except:
+        except Exception:
             title_key = issue.key
 
         title = title_key + " - " + issue.fields.summary
 
         subpage = self._page.children.add_new(PageBlock, title=title)
 
-        subpage.children.add_new(BookmarkBlock, link=jira_man.get_url(issue.key), title=issue.key, description=issue.fields.summary)
+        subpage.children.add_new(
+            BookmarkBlock,
+            link=jira_man.get_url(issue.key), title=issue.key, description=issue.fields.summary)
         subpage.children.add_new(TextBlock, title=issue.fields.description)
         subpage.children.add_new(DividerBlock)
         subpage.children.add_new(HeaderBlock, title="İşler")
