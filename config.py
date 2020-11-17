@@ -5,7 +5,7 @@ import os
 
 class Config:
     """ Configuration class """
-    _CONFIG_FILE = "/Users/kerem/OneDrive/etc/config/jira2notion.txt" # Check sample_config.txt
+    _CONFIG_FILE = "/Users/kerem/Documents/etc/config/jira2notion.txt" # Check sample_config.txt
 
     def __init__(self):
         # Read text file
