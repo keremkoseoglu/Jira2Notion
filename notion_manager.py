@@ -20,7 +20,7 @@ class NotionManager:
         self._client = NotionClient(token_v2=self._config.notion_token_v2)
         self._page = self._client.get_block(self._config.notion_page)
 
-    def create_page(self, issue: Issue, jira_man: JiraManager):
+    def create_page(self, issue: Issue, jira_man: JiraManager, with_comments: bool = False):
         """ Creates a new Notion page """
         try:
             title_key = issue.fields.parent.key
@@ -46,13 +46,15 @@ class NotionManager:
         subpage.children.add_new(TextBlock, title="...")
         subpage.children.add_new(SubheaderBlock, title="Yorum")
         subpage.children.add_new(TextBlock, title="...")
-        subpage.children.add_new(DividerBlock)
-        subpage.children.add_new(HeaderBlock, title="Mevcut yorumlar")
 
-        for i in range(self._config.notion_comment_count):
-            comment_idx = issue.fields.comment.total - 1 - i
-            if comment_idx < 0:
-                break
-            current_comment = issue.fields.comment.comments[comment_idx]
-            subpage.children.add_new(QuoteBlock, title=current_comment.body)
+        if with_comments:
             subpage.children.add_new(DividerBlock)
+            subpage.children.add_new(HeaderBlock, title="Mevcut yorumlar")
+
+            for i in range(self._config.notion_comment_count):
+                comment_idx = issue.fields.comment.total - 1 - i
+                if comment_idx < 0:
+                    break
+                current_comment = issue.fields.comment.comments[comment_idx]
+                subpage.children.add_new(QuoteBlock, title=current_comment.body)
+                subpage.children.add_new(DividerBlock)
