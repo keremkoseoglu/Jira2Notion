@@ -1,4 +1,4 @@
-""" Notion manager module """
+""" Notion unofficial API module """
 from jira.resources import Issue
 from notion.client import NotionClient
 from notion.block import PageBlock
@@ -11,17 +11,17 @@ from notion.block import DividerBlock
 from notion.block import QuoteBlock
 from config import Config
 from jira_manager import JiraManager
+from notion_dao.dao import NotionDAO
 
-
-class NotionManager:
-    """ Notion manager class """
+class APIv1(NotionDAO):
+    """ Unofficial Notion API implementation """
     def __init__(self, c: Config):
-        self._config = c
+        super().__init__(c)
         self._client = NotionClient(token_v2=self._config.notion_token_v2)
         self._page = self._client.get_block(self._config.notion_page)
 
     def create_page(self, issue: Issue, jira_man: JiraManager, with_comments: bool = False):
-        """ Creates a new Notion page """
+        """ Creation of a new Notion page """
         try:
             title_key = issue.fields.parent.key
         except Exception:

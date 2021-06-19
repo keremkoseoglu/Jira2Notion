@@ -43,14 +43,24 @@ pip install jira
 ### OS independent
 
 * Ensure that you have [Notion](www.notion.so) and Jira accounts (doh)
-
-* Create a new config file which looks like sample_config.txt. You are going to fill this file with your credentials. This file is pretty intuitive except the "notion" part:
-  * token_v2: The value you should enter here is stored in a cookie called token_v2, which will be found in the browser you are logged in to Notion.
-  * page: This is the URL of the page you are going to transfer your Jira issues to. Simply copy & paste the page URL from your browser.
-
+* Create a new config file which looks like sample_config.txt. You are going to fill this file with your credentials. Jira credentials are intuitive. Notion credentials are explained below.
 * Ensure that config.py points to your own configuration file, which you have prepared above
 
-* Modify notion_manager.py to change the content of your cards (optional)
+Jira2Notion can run via to distinct API's: The (deferred, slow) unofficial API, and the (recommended, fast) official API.
+
+If you want to use the unofficial Notion API:
+
+* Remove the "notion_official" section from your config file
+* Fill the "notion" section in your config file with the following values:
+  * token_v2: The value you should enter here is stored in a cookie called token_v2, which will be found in the browser you are logged in to Notion.
+  * page: This is the URL of the page you are going to transfer your Jira issues to. Simply copy & paste the page URL from your browser.
+* (Optional) modify **notion_dao/api_v1.py** to change the content of your cards
+
+If you want to use the official API:
+
+* Follow the steps in [Notion API documentation](https://developers.notion.com) - check "Getting Started" to enable API's in your Notion account. You will end up with a database ID and secret token.
+* Put those values into the "notion_official" section of your config file.
+* (Optional) modify **notion_dao/api_v2.py** to change the content of your cards
 
 ### Mac OS (optional)
 

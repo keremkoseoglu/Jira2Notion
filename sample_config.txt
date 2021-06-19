@@ -11,7 +11,12 @@
         "comment_count": 3
     },
     "notion": {
-	"token_v2": "111222333444aa",
-	"page": "https://www.notion.so/my_notion_account/my_notion_page"
+        "token_v2": "111222333444aa",
+        "page": "https://www.notion.so/my_notion_account/my_notion_page"
+    },
+    "notion_official": {
+        "version": "2021-05-13",
+        "token": "secret_a9.......",
+        "database": "9530bb......."
     }
 }}

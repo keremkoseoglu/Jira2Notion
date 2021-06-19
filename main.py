@@ -1,7 +1,7 @@
 """ Program entry point """
 import sys
 from config import Config
-from notion_manager import NotionManager
+from notion_dao.factory import get_instance as get_notion_instance
 from jira_manager import JiraManager
 from gui import get_value_by_popup
 
@@ -9,7 +9,7 @@ def sync_issue(issue_code: str):
     """ Reads the given issue from Jira and transfers to Notion """
     my_config = Config()
     my_jira_manager = JiraManager(my_config)
-    my_notion_manager = NotionManager(my_config)
+    my_notion_manager = get_notion_instance(my_config)
 
     issue = my_jira_manager.get_issue(issue_code)
     my_notion_manager.create_page(issue, my_jira_manager)

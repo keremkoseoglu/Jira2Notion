@@ -24,3 +24,14 @@ class Config:
         self.jira_base_url = json_data["config"]["jira"]["base_url"]
         self.jira_username = json_data["config"]["jira"]["username"]
         self.jira_password = json_data["config"]["jira"]["password"]
+
+        if "notion_official" in json_data["config"]:
+            self.notion_official_configured = True
+            self.notion_official_version = json_data["config"]["notion_official"]["version"]
+            self.notion_official_token = json_data["config"]["notion_official"]["token"]
+            self.notion_official_database = json_data["config"]["notion_official"]["database"]
+        else:
+            self.notion_official_configured = False
+            self.notion_official_version = ""
+            self.notion_official_token = ""
+            self.notion_official_database = ""
