@@ -37,7 +37,7 @@ class APIv2(NotionDAO):
                    "Authorization": "Bearer " + self._config.notion_official_token}
 
         body = {
-            "parent": { "database_id": "9530bb3c443d47fcadc6ecc566a6b364" },
+            "parent": { "database_id": self._config.notion_official_database },
             "properties": {
             "title": { "title": [{ "text": { "content": title } }] }
             },
