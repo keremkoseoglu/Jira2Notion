@@ -45,7 +45,7 @@ class APIv2(NotionDAO):
                 {
                     "object": "block",
                     "type": "paragraph",
-                    "paragraph": { "text": [{ "type": "rich_text", "text": { "content": link, "link": { "url": link } } }] }
+                    "paragraph": { "text": [{ "type": "text", "text": { "content": link, "link": { "url": link } } }] }
                 },
                 {
                     "object": "block",
