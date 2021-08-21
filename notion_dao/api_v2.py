@@ -39,53 +39,14 @@ class APIv2(NotionDAO):
         body = {
             "parent": { "database_id": self._config.notion_official_database },
             "properties": {
-            "title": { "title": [{ "text": { "content": title } }] }
+                "title": { "title": [{ "text": { "content": title } }] },
+                "URL": { "type": "url", "url": link  }
             },
             "children": [
                 {
                     "object": "block",
-                    "type": "paragraph",
-                    "paragraph": { "text": [{ "type": "text", "text": { "content": link, "link": { "url": link } } }] }
-                },
-                {
-                    "object": "block",
-                    "type": "paragraph",
-                    "paragraph": { "text": [{ "type": "text", "text": { "content": description } } ] }
-                },
-                {
-                    "object": "block",
                     "type": "heading_1",
-                    "heading_1": { "text": [{ "type": "text", "text": { "content": "İşler" } } ] }
-                },
-                {
-                    "object": "block",
-                    "type": "to_do",
-                    "to_do": { "text": [{ "type": "text", "text": { "content": "..." } } ] }
-                },
-                {
-                    "object": "block",
-                    "type": "heading_1",
-                    "heading_1": { "text": [{ "type": "text", "text": { "content": "Request notu" } } ] }
-                },
-                {
-                    "object": "block",
-                    "type": "paragraph",
-                    "paragraph": { "text": [{ "type": "text", "text": { "content": "..." } } ] }
-                },
-                {
-                    "object": "block",
-                    "type": "heading_1",
-                    "heading_1": { "text": [{ "type": "text", "text": { "content": "Soft Config" } } ] }
-                },
-                {
-                    "object": "block",
-                    "type": "paragraph",
-                    "paragraph": { "text": [{ "type": "text", "text": { "content": "..." } } ] }
-                },
-                {
-                    "object": "block",
-                    "type": "heading_1",
-                    "heading_1": { "text": [{ "type": "text", "text": { "content": "Yorum" } } ] }
+                    "heading_1": { "text": [{ "type": "text", "text": { "content": "Comments" } } ] }
                 },
                 {
                     "object": "block",
