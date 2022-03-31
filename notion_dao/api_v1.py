@@ -27,7 +27,7 @@ class APIv1(NotionDAO):
         except Exception:
             title_key = issue.key
 
-        title = title_key + " - " + issue.fields.summary
+        title = f"{title_key} - {issue.fields.summary}"
 
         subpage = self._page.children.add_new(PageBlock, title=title)
 

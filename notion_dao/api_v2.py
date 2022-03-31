@@ -24,7 +24,7 @@ class APIv2(NotionDAO):
         except Exception:
             title_key = issue.key
 
-        title = title_key + " - " + issue.fields.summary
+        title = f"{title_key} - {issue.fields.summary}"
         link = jira_man.get_url(issue.key)
 
         description = issue.fields.description
@@ -59,4 +59,4 @@ class APIv2(NotionDAO):
         response = requests.post(_PAGE_URL, data=json.dumps(body), headers=headers)
 
         if response.status_code != 200:
-            raise Exception("Notion API error: " + response.reason)
+            raise Exception(f"Notion API error: {response.reason}")
